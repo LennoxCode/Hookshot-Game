@@ -11,6 +11,8 @@ public class GrapplingController : MonoBehaviour
     [SerializeField] private Transform hookPivot;
     [SerializeField] private SpringJoint2D _joint2D;
     [SerializeField] private Transform gunNuzzle;
+
+    [SerializeField] private LineRenderer _lineRenderer;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,11 +24,17 @@ public class GrapplingController : MonoBehaviour
     {
         Vector3 mousePos = viewPort.ScreenToWorldPoint(Input.mousePosition);
         RotateHookShot(mousePos);
+        _lineRenderer.SetPosition(0, transform.position);
     }
 
     private void LateUpdate()
     {
         if(Input.GetKeyDown(KeyCode.Mouse0)) ShootHook();
+        if (Input.GetKeyDown(KeyCode.Mouse1))
+        {
+            _joint2D.enabled = false;
+            _lineRenderer.enabled = false;
+        }
     }
 
     private void RotateHookShot(Vector3 to)
@@ -45,6 +53,10 @@ public class GrapplingController : MonoBehaviour
             if (Vector2.Distance(_hit.point, gunNuzzle.position) <= maxDistance)
             {
                 _joint2D.connectedAnchor = _hit.point;
+                _joint2D.enabled = true;
+                _lineRenderer.enabled = true;
+                _lineRenderer.SetPosition(0, transform.position);
+                _lineRenderer.SetPosition(1, _hit.point);
             }
         }
     }
