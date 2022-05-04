@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class GrapplingController : MonoBehaviour
 {
+    public static Action hookHit;
+    public static Action unhooked;
     [SerializeField] private float maxDistance;
     [SerializeField] private Camera viewPort;
 
@@ -13,6 +15,8 @@ public class GrapplingController : MonoBehaviour
     [SerializeField] private Transform gunNuzzle;
 
     [SerializeField] private LineRenderer _lineRenderer;
+
+    private bool hooked = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,11 +33,13 @@ public class GrapplingController : MonoBehaviour
 
     private void LateUpdate()
     {
-        if(Input.GetKeyDown(KeyCode.Mouse0)) ShootHook();
+        if(Input.GetKeyDown(KeyCode.Mouse0) && !hooked) ShootHook();
         if (Input.GetKeyDown(KeyCode.Mouse1))
         {
             _joint2D.enabled = false;
             _lineRenderer.enabled = false;
+            unhooked?.Invoke();
+            hooked = false;
         }
     }
 
@@ -52,6 +58,8 @@ public class GrapplingController : MonoBehaviour
             RaycastHit2D _hit = Physics2D.Raycast(gunNuzzle.position, direction);
             if (Vector2.Distance(_hit.point, gunNuzzle.position) <= maxDistance)
             {
+                hooked = true;
+                hookHit?.Invoke();
                 _joint2D.connectedAnchor = _hit.point;
                 _joint2D.enabled = true;
                 _lineRenderer.enabled = true;
