@@ -48,8 +48,8 @@ public class PlayerController : MonoBehaviour
         {
             _joint2D.distance = (_joint2D.connectedAnchor - (Vector2) transform.position).magnitude;
         }
-        if (Input.GetKey(KeyCode.A )&& currentState != PlayerState.Hooked) rb.AddForce(Vector2.left * movementSpeed);
-        if (Input.GetKey(KeyCode.D) &&currentState != PlayerState.Hooked) rb.AddForce(Vector2.right * movementSpeed);
+        if (Input.GetKey(KeyCode.A ) && rb.velocity.x > -5) rb.AddForce(Vector2.left * movementSpeed * rb.mass);
+        if (Input.GetKey(KeyCode.D) && rb.velocity.x < 5) rb.AddForce(Vector2.right * movementSpeed * rb.mass);
         
     }
 

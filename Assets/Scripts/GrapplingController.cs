@@ -20,7 +20,7 @@ public class GrapplingController : MonoBehaviour
     [SerializeField] private SpringJoint2D _joint2D;
     [SerializeField] private Transform gunNuzzle;
     [SerializeField] private RopeAnimationController _rac;
-
+    [SerializeField] private Rigidbody2D playerRB;
     private bool hooked = false;
     // Start is called before the first frame update
     void Start()
@@ -31,13 +31,14 @@ public class GrapplingController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 mousePos = viewPort.ScreenToWorldPoint(Input.mousePosition);
-        RotateHookShot(mousePos);
+        
         grappleOrigin = gunNuzzle.position;
     }
 
     private void LateUpdate()
     {
+        Vector3 mousePos = viewPort.ScreenToWorldPoint(Input.mousePosition);
+        RotateHookShot(mousePos);
         if(Input.GetKeyDown(KeyCode.Mouse0) && !hooked) ShootHook();
         if (Input.GetKeyDown(KeyCode.Mouse1))
         {
@@ -55,8 +56,14 @@ public class GrapplingController : MonoBehaviour
         hookPivot.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
     }
 
+    private void HookToAnchor()
+    {
+        Vector2 direction = (_joint2D.connectedAnchor - _joint2D.anchor).normalized;
+        playerRB.AddForce(direction);
+    }
     private void ShootHook()
     {
+        
         Vector2 direction = (gunNuzzle.position - transform.position).normalized;
         if (Physics2D.Raycast(gunNuzzle.position, direction))
         {

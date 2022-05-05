@@ -382,13 +382,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 916b2f079e0c6644daf5cbe072db1a79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxDistance: 50
-  grappleSpeed: 2.99
+  maxDistance: 6.2
+  grappleSpeed: 3.4
   viewPort: {fileID: 519420031}
   hookPivot: {fileID: 599421671}
   _joint2D: {fileID: 3522994}
   gunNuzzle: {fileID: 1402474644}
   _rac: {fileID: 1588822846}
+  playerRB: {fileID: 0}
 --- !u!1 &387069758
 GameObject:
   m_ObjectHideFlags: 0
@@ -509,6 +510,7 @@ GameObject:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
+  - component: {fileID: 519420030}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -524,6 +526,19 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_Enabled: 1
+--- !u!114 &519420030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c65938b4efc96649a31989c5c22f777, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerPos: {fileID: 3522992}
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -1156,7 +1171,7 @@ MonoBehaviour:
   grapplingGun: {fileID: 101554545}
   m_lineRenderer: {fileID: 1588822845}
   percision: 40
-  straightenLineSpeed: 9.3
+  straightenLineSpeed: 11.6
   ropeAnimationCurve:
     serializedVersion: 2
     m_Curve:
@@ -1251,7 +1266,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  ropeProgressionSpeed: 2.4
+  ropeProgressionSpeed: 11.4
   isGrappling: 1
 --- !u!1 &1870333863
 GameObject:
