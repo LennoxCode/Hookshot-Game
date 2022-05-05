@@ -7,14 +7,19 @@ public class GrapplingController : MonoBehaviour
 {
     public static Action hookHit;
     public static Action unhooked;
-    [SerializeField] private float maxDistance;
-    [SerializeField] private Camera viewPort;
+    public Vector2 targetDirection {private set; get;}
+    public Vector2 grappleOrigin {private set; get;}
+    public Vector2 grapplePoint {private set; get;}
+    [Header("Settings:")]
+    [SerializeField] [Range(5, 100)]private float maxDistance;
 
+    [SerializeField][Range(1, 6)]private float grappleSpeed;
+    [Header("Refernces:")]
+    [SerializeField] private Camera viewPort;
     [SerializeField] private Transform hookPivot;
     [SerializeField] private SpringJoint2D _joint2D;
     [SerializeField] private Transform gunNuzzle;
-
-    [SerializeField] private LineRenderer _lineRenderer;
+    [SerializeField] private RopeAnimationController _rac;
 
     private bool hooked = false;
     // Start is called before the first frame update
@@ -28,7 +33,7 @@ public class GrapplingController : MonoBehaviour
     {
         Vector3 mousePos = viewPort.ScreenToWorldPoint(Input.mousePosition);
         RotateHookShot(mousePos);
-        _lineRenderer.SetPosition(0, transform.position);
+        grappleOrigin = gunNuzzle.position;
     }
 
     private void LateUpdate()
@@ -37,7 +42,7 @@ public class GrapplingController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Mouse1))
         {
             _joint2D.enabled = false;
-            _lineRenderer.enabled = false;
+            _rac.enabled = false;
             unhooked?.Invoke();
             hooked = false;
         }
@@ -61,10 +66,11 @@ public class GrapplingController : MonoBehaviour
                 hooked = true;
                 hookHit?.Invoke();
                 _joint2D.connectedAnchor = _hit.point;
+                grapplePoint = _hit.point;
+                grappleOrigin = gunNuzzle.position;
                 _joint2D.enabled = true;
-                _lineRenderer.enabled = true;
-                _lineRenderer.SetPosition(0, transform.position);
-                _lineRenderer.SetPosition(1, _hit.point);
+                _rac.enabled = true;
+                targetDirection = direction;
             }
         }
     }

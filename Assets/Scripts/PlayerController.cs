@@ -4,16 +4,19 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     // Start is called before the first frame update
-    private Rigidbody2D rb;
+   
     public PlayerState currentState;
     [SerializeField] private float movementSpeed;
     [SerializeField] private float jumpHeight;
     [SerializeField] private Transform raycastStart;
     [SerializeField] private SpringJoint2D _joint2D;
+    
+  
+    private Rigidbody2D rb;
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        GrapplingController.hookHit += ChangeStateToHooked;
+        RopeAnimationController.hookArrived += ChangeStateToHooked;
         GrapplingController.unhooked += Unhook;
     }
 
@@ -39,8 +42,11 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Mouse0) && currentState == PlayerState.Hooked)
         {
-            Vector2 direction = (_joint2D.connectedAnchor - (Vector2)transform.position).normalized;
-            rb.AddForce(direction * 3);
+            _joint2D.distance = 0.5f;
+        }
+        else if (Input.GetKeyUp(KeyCode.Mouse0))
+        {
+            _joint2D.distance = (_joint2D.connectedAnchor - (Vector2) transform.position).magnitude;
         }
         if (Input.GetKey(KeyCode.A)) rb.AddForce(Vector2.left * movementSpeed);
         if (Input.GetKey(KeyCode.D)) rb.AddForce(Vector2.right * movementSpeed);
