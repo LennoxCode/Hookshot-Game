@@ -48,19 +48,27 @@ public class PlayerController : MonoBehaviour
         {
             _joint2D.distance = (_joint2D.connectedAnchor - (Vector2) transform.position).magnitude;
         }
-        if (Input.GetKey(KeyCode.A)) rb.AddForce(Vector2.left * movementSpeed);
-        if (Input.GetKey(KeyCode.D)) rb.AddForce(Vector2.right * movementSpeed);
+        if (Input.GetKey(KeyCode.A )&& currentState != PlayerState.Hooked) rb.AddForce(Vector2.left * movementSpeed);
+        if (Input.GetKey(KeyCode.D) &&currentState != PlayerState.Hooked) rb.AddForce(Vector2.right * movementSpeed);
         
     }
 
     private void ChangeStateToHooked()
     {
         currentState = PlayerState.Hooked;
+        rb.mass = 0.3f;
     }
 
     private void Unhook()
     {
-        currentState = PlayerState.Jumping;
+        rb.mass = 1;
+        if (rb.velocity.magnitude == 0)
+        {
+            currentState = PlayerState.Neutral;    
+        }else if (rb.velocity.y > 0)
+        {
+            currentState = PlayerState.Jumping;
+        }else currentState = PlayerState.Falling;
     }
     public enum PlayerState
     {

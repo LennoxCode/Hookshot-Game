@@ -11,7 +11,7 @@ public class GrapplingController : MonoBehaviour
     public Vector2 grappleOrigin {private set; get;}
     public Vector2 grapplePoint {private set; get;}
     [Header("Settings:")]
-    [SerializeField] [Range(5, 100)]private float maxDistance;
+    [SerializeField] [Range(0.5f, 20)]private float maxDistance;
 
     [SerializeField][Range(1, 6)]private float grappleSpeed;
     [Header("Refernces:")]
@@ -61,6 +61,7 @@ public class GrapplingController : MonoBehaviour
         if (Physics2D.Raycast(gunNuzzle.position, direction))
         {
             RaycastHit2D _hit = Physics2D.Raycast(gunNuzzle.position, direction);
+            Debug.Log(Vector2.Distance(_hit.point, gunNuzzle.position));
             if (Vector2.Distance(_hit.point, gunNuzzle.position) <= maxDistance)
             {
                 hooked = true;
@@ -73,5 +74,11 @@ public class GrapplingController : MonoBehaviour
                 targetDirection = direction;
             }
         }
+    }
+    
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(gunNuzzle.position, maxDistance);
     }
 }
