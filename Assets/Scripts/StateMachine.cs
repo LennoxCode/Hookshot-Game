@@ -8,7 +8,7 @@ public abstract class StateMachine<Transition> : MonoBehaviour where Transition 
 {
     [SerializeField] private List<TransitionConnection<Transition>> transitions;
     [field: SerializeField] public StateHandler currentState { get; private set; }
-    private Dictionary<StateHandler, List<TransitionConnection<Transition>> stateToTransitions;
+    private Dictionary<StateHandler, List<TransitionConnection<Transition>>> _stateToTransitions;
 
     protected void AddTransition(StateHandler from, StateHandler to, Transition transition)
     {
@@ -17,27 +17,27 @@ public abstract class StateMachine<Transition> : MonoBehaviour where Transition 
             Debug.LogError($"There is already a transition from {from.Name} with transition {transition}");
             return;
         }
-        transitions.Add(new TransitionConnection from, to, transition));
+        transitions.Add(new TransitionConnection<Transition>(from, to, transition));
     }
 
     protected void Commit(StateHandler optionalEntry = null)
     {
-        if (stateToTransitions != null)
+        if (_stateToTransitions != null)
         {
             Debug.LogError("cannot commit state machine is already built");
             return;
         }
 
-        stateToTransitions = new Dictionary<StateHandler, List<TransitionConnection<Transition>>>();
+        _stateToTransitions = new Dictionary<StateHandler, List<TransitionConnection<Transition>>>();
         foreach (var transition in transitions)
         {
-            if (stateToTransitions.ContainsKey(transition.from))
+            if (_stateToTransitions.ContainsKey(transition.from))
             {
-                stateToTransitions[transition.from].Add(transition);
+                _stateToTransitions[transition.from].Add(transition);
             }
             else
             {
-                stateToTransitions[transition.from] = new List<TransitionConnection>();
+                _stateToTransitions[transition.from] = new List<TransitionConnection<Transition>>();
             }
         }
 
@@ -54,12 +54,29 @@ public abstract class StateMachine<Transition> : MonoBehaviour where Transition 
     public bool Trigger(Transition transition)
     {
 
-        var possibleTransitons = stateToTransitions[currentState];
+        var possibleTransitons = _stateToTransitions[currentState];
         var concreteTransition = possibleTransitons.FirstOrDefault(x => x.transition.Equals(transition));
         if (concreteTransition == null) return false;
         concreteTransition.from.OnExit(transition);
         currentState = concreteTransition.to;
         concreteTransition.to.OnEnter(transition);
         return true;
+    }
+
+    private void Start()
+    {
+        if (_stateToTransitions != null) return;
+        Commit();
+    }
+
+    public void Trigger(string trigger)
+    {
+        if (!Enum.TryParse<Transition>(trigger, out var value))
+        {
+            Debug.LogError($"{trigger} is not a valid transition value");
+            return;
+        }
+
+        Trigger(value);
     }
 }
