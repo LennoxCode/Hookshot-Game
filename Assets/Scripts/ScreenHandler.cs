@@ -7,7 +7,6 @@ public class ScreenHandler : StateHandler
     [SerializeField] private CanvasGroup canvasGroup;
     public override void OnEnter<T>(T transition)
     {
-        Debug.Log("entered xdd");
         canvasGroup.alpha = 1;
         canvasGroup.interactable = true;
         canvasGroup.blocksRaycasts = true;
