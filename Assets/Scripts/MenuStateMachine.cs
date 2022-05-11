@@ -11,10 +11,14 @@ public class MenuStateMachine : StateMachine<MenuTransitions>
         AddTransition(MainMenuHandler, OptionHandler, MenuTransitions.OptionSelected);
         AddTransition(OptionHandler, MainMenuHandler, MenuTransitions.MainMenuSelected);
     }
+    
 }
 
 public enum MenuTransitions
 {
     MainMenuSelected,
-    OptionSelected
+    OptionSelected,
+    LevelMenuSelected,
+    GameLost,
+    Pause,
 }

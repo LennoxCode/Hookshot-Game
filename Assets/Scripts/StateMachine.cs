@@ -37,14 +37,14 @@ public abstract class StateMachine<Transition> : MonoBehaviour where Transition 
             }
             else
             {
-                _stateToTransitions[transition.from] = new List<TransitionConnection<Transition>>();
+                _stateToTransitions[transition.from] = new List<TransitionConnection<Transition>>() {transition};
             }
         }
 
         if (optionalEntry != null)
         {
             currentState = optionalEntry;
-            //currentState.OnEnter();
+            //currentState.OnEnter(RuntimeTransition.fromInit);
         }
         else if (transitions.Count > 0)
         {
@@ -53,8 +53,9 @@ public abstract class StateMachine<Transition> : MonoBehaviour where Transition 
     }
     public bool Trigger(Transition transition)
     {
-
+        Debug.Log(currentState);
         var possibleTransitons = _stateToTransitions[currentState];
+        Debug.Log(possibleTransitons.Count);
         var concreteTransition = possibleTransitons.FirstOrDefault(x => x.transition.Equals(transition));
         if (concreteTransition == null) return false;
         concreteTransition.from.OnExit(transition);
