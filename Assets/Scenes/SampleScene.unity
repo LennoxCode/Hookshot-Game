@@ -137,6 +137,7 @@ GameObject:
   - component: {fileID: 3522989}
   - component: {fileID: 3522993}
   - component: {fileID: 3522994}
+  - component: {fileID: 3522995}
   m_Layer: 2
   m_Name: Player
   m_TagString: Untagged
@@ -255,7 +256,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3522988}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1e57f673f93f03d4e9bdd44be7145aa1, type: 3}
   m_Name: 
@@ -263,8 +264,27 @@ MonoBehaviour:
   currentState: 0
   movementSpeed: 0.25
   raycastStart: {fileID: 1870333864}
-  _joint2D: {fileID: 3522994}
---- !u!231 &3522994
+  _joint2D: {fileID: 0}
+--- !u!232 &3522994
+DistanceJoint2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3522988}
+  m_Enabled: 1
+  serializedVersion: 4
+  m_EnableCollision: 0
+  m_ConnectedRigidBody: {fileID: 101554547}
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_AutoConfigureConnectedAnchor: 0
+  m_Anchor: {x: 0, y: 0}
+  m_ConnectedAnchor: {x: -1.3000001, y: 0}
+  m_AutoConfigureDistance: 1
+  m_Distance: 0.005
+  m_MaxDistanceOnly: 1
+--- !u!231 &3522995
 SpringJoint2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -274,7 +294,7 @@ SpringJoint2D:
   m_Enabled: 0
   serializedVersion: 4
   m_EnableCollision: 1
-  m_ConnectedRigidBody: {fileID: 0}
+  m_ConnectedRigidBody: {fileID: 3522989}
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 0
@@ -295,6 +315,9 @@ GameObject:
   - component: {fileID: 101554543}
   - component: {fileID: 101554544}
   - component: {fileID: 101554545}
+  - component: {fileID: 101554547}
+  - component: {fileID: 101554546}
+  - component: {fileID: 101554548}
   m_Layer: 2
   m_Name: HookshootGun
   m_TagString: Untagged
@@ -382,13 +405,68 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxDistance: 6.2
-  grappleSpeed: 1
   viewPort: {fileID: 519420031}
   hookPivot: {fileID: 599421671}
-  _joint2D: {fileID: 3522994}
+  _joint2D: {fileID: 3522995}
   gunNuzzle: {fileID: 1402474644}
   _rac: {fileID: 1588822846}
-  playerRB: {fileID: 0}
+--- !u!231 &101554546
+SpringJoint2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 101554542}
+  m_Enabled: 0
+  serializedVersion: 4
+  m_EnableCollision: 1
+  m_ConnectedRigidBody: {fileID: 3522989}
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_AutoConfigureConnectedAnchor: 0
+  m_Anchor: {x: 0, y: 0}
+  m_ConnectedAnchor: {x: 0, y: 0}
+  m_AutoConfigureDistance: 0
+  m_Distance: 1.74
+  m_DampingRatio: 1
+  m_Frequency: 1
+--- !u!50 &101554547
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 101554542}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!114 &101554548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 101554542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e57f673f93f03d4e9bdd44be7145aa1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentState: 0
+  movementSpeed: 0.25
+  raycastStart: {fileID: 1870333864}
+  _joint2D: {fileID: 3522995}
 --- !u!1 &387069758
 GameObject:
   m_ObjectHideFlags: 0
@@ -604,6 +682,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 599421671}
+  - component: {fileID: 599421672}
   m_Layer: 2
   m_Name: hookPivot
   m_TagString: Untagged
@@ -626,6 +705,18 @@ Transform:
   m_Father: {fileID: 3522992}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &599421672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 599421670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1000203e3883bbe4d93679ebe296a81d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &820957648
 GameObject:
   m_ObjectHideFlags: 0

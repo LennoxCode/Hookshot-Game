@@ -13,32 +13,25 @@ public class GrapplingController : MonoBehaviour
     [Header("Settings:")]
     [SerializeField] [Range(0.5f, 20)]private float maxDistance;
 
-    [SerializeField][Range(1, 6)]private float grappleSpeed;
     [Header("Refernces:")]
     [SerializeField] private Camera viewPort;
     [SerializeField] private Transform hookPivot;
     [SerializeField] private SpringJoint2D _joint2D;
     [SerializeField] private Transform gunNuzzle;
     [SerializeField] private RopeAnimationController _rac;
-    [SerializeField] private Rigidbody2D playerRB;
     private bool hooked = false;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    
 
     // Update is called once per frame
     void Update()
     {
-        
         grappleOrigin = gunNuzzle.position;
     }
 
     private void LateUpdate()
     {
         Vector3 mousePos = viewPort.ScreenToWorldPoint(Input.mousePosition);
-        RotateHookShot(mousePos);
+        
         if(Input.GetKeyDown(KeyCode.Mouse0) && !hooked) ShootHook();
         if (Input.GetKeyDown(KeyCode.Mouse1))
         {
@@ -49,18 +42,6 @@ public class GrapplingController : MonoBehaviour
         }
     }
 
-    private void RotateHookShot(Vector3 to)
-    {
-        Vector2 distanceVector = to - hookPivot.position;
-        float angle = Mathf.Atan2(distanceVector.y, distanceVector.x) * Mathf.Rad2Deg;
-        hookPivot.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-    }
-
-    private void HookToAnchor()
-    {
-        Vector2 direction = (_joint2D.connectedAnchor - _joint2D.anchor).normalized;
-        playerRB.AddForce(direction);
-    }
     private void ShootHook()
     {
         
