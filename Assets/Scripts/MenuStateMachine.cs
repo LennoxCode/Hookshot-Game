@@ -4,6 +4,7 @@ using Object = System.Object;
 
 public class MenuStateMachine : StateMachine<MenuTransitions>
 {
+    public static MenuStateMachine instance;
     [field: SerializeField] public StateHandler MainMenuHandler { get; private set; }
     [field: SerializeField] public StateHandler OptionHandler { get; private set; }
     [field: SerializeField] public StateHandler LevelsHandler { get; private set; }
@@ -12,6 +13,8 @@ public class MenuStateMachine : StateMachine<MenuTransitions>
     [field: SerializeField] public StateHandler LostHandler { get; private set; }
     private void Awake()
     {
+        if(instance != null){Destroy(gameObject);}
+        instance = this;
         DontDestroyOnLoad(this);
         AddTransition(MainMenuHandler, OptionHandler, MenuTransitions.OptionSelected);
         AddTransition(OptionHandler, MainMenuHandler, MenuTransitions.MainMenuSelected);

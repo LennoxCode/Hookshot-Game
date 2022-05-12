@@ -68,7 +68,6 @@ public class GrapplingController : MonoBehaviour
         if (Physics2D.Raycast(gunNuzzle.position, direction))
         {
             RaycastHit2D _hit = Physics2D.Raycast(gunNuzzle.position, direction);
-            Debug.Log(Vector2.Distance(_hit.point, gunNuzzle.position));
             if (Vector2.Distance(_hit.point, gunNuzzle.position) <= maxDistance)
             {
                 hooked = true;

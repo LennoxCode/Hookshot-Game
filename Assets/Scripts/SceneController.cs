@@ -7,9 +7,13 @@ using UnityEngine.SceneManagement;
 
 public class SceneController : MonoBehaviour
 {
-    [SerializeField] private SceneAsset[] _sceneAssets; 
+    [SerializeField] private SceneAsset[] _sceneAssets;
+    public static SceneController instance;
     private void Awake()
     {
+        if(instance != null){Destroy(this.gameObject);}
+
+        instance = this;
         DontDestroyOnLoad(this);
     }
 
