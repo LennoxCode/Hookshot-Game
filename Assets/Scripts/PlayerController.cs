@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float movementSpeed;
     /*[SerializeField] private float jumpHeight;*/
     [SerializeField] private Transform raycastStart;
-    [SerializeField] private SpringJoint2D _joint2D;
+    [SerializeField] private DistanceJoint2D _joint2D;
     
   
     private Rigidbody2D rb;

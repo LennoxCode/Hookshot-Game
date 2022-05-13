@@ -15,8 +15,7 @@ public class GrapplingController : MonoBehaviour
 
     [Header("Refernces:")]
     [SerializeField] private Camera viewPort;
-    [SerializeField] private Transform hookPivot;
-    [SerializeField] private SpringJoint2D _joint2D;
+    [SerializeField] private DistanceJoint2D _joint2D;
     [SerializeField] private Transform gunNuzzle;
     [SerializeField] private RopeAnimationController _rac;
     private bool hooked = false;
