@@ -17,7 +17,7 @@ public class AimScript : MonoBehaviour
         var mousePosition = _cam.ScreenToWorldPoint(Input.mousePosition) - transform.position;
         mousePosition.z = 0;
 
-        transform.right = mousePosition;
+        transform.up = mousePosition;
             
     }
 }
