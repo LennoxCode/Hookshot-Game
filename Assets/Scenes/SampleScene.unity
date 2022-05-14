@@ -257,8 +257,8 @@ GameObject:
   - component: {fileID: 101554544}
   - component: {fileID: 101554545}
   - component: {fileID: 101554547}
-  - component: {fileID: 101554548}
   - component: {fileID: 101554549}
+  - component: {fileID: 101554548}
   - component: {fileID: 101554546}
   m_Layer: 2
   m_Name: HookshootGun
@@ -412,8 +412,8 @@ MonoBehaviour:
   movementSpeed: 0.25
   raycastStart: {fileID: 1870333864}
   _joint2D: {fileID: 101554549}
---- !u!232 &101554549
-DistanceJoint2D:
+--- !u!231 &101554549
+SpringJoint2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -427,10 +427,11 @@ DistanceJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 0
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: -4.83, y: -2.548227}
+  m_ConnectedAnchor: {x: 0, y: 0}
   m_AutoConfigureDistance: 0
   m_Distance: 5.460985
-  m_MaxDistanceOnly: 0
+  m_DampingRatio: 1
+  m_Frequency: 1.17
 --- !u!1 &387069758
 GameObject:
   m_ObjectHideFlags: 0
