@@ -17,11 +17,13 @@ public class ScoreController : MonoBehaviour
         DontDestroyOnLoad(this);   
         
     }
-
+    
     void Start()
     {
+        SceneController.instance.OnLevelLoaded += ResetScore;
         secondsPassed = 0;
         StartCoroutine(IncrementTime());
+        
     }
 
     void Update()
@@ -40,6 +42,12 @@ public class ScoreController : MonoBehaviour
     public void GetScores()
     {
         
+    }
+
+    private void ResetScore()
+    {
+        score = 0;
+        secondsPassed = 0;
     }
     public IEnumerator IncrementTime()
     {

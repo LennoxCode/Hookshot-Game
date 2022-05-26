@@ -11,6 +11,7 @@ public class MenuStateMachine : StateMachine<MenuTransitions>
     [field: SerializeField] public StateHandler HUDHandler { get; private set; }
     [field: SerializeField] public StateHandler PauseHandler { get; private set; }
     [field: SerializeField] public StateHandler LostHandler { get; private set; }
+    [field: SerializeField] public StateHandler WinHandler { get; private set; }
     private void Awake()
     {
         if(instance != null){Destroy(gameObject);}
@@ -28,8 +29,11 @@ public class MenuStateMachine : StateMachine<MenuTransitions>
         AddTransition(PauseHandler, HUDHandler, MenuTransitions.ResumeGame);
         AddTransition(HUDHandler, LostHandler, MenuTransitions.GameLost);
         AddTransition(PauseHandler, MainMenuHandler, MenuTransitions.MainMenuSelected);
+        AddTransition(HUDHandler, WinHandler, MenuTransitions.GameWon);
+        
+        Goal.playerEnteredGoal += () => Trigger(MenuTransitions.GameWon);
     }
-
+    
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape)) Trigger(MenuTransitions.Pause);
@@ -42,6 +46,7 @@ public enum MenuTransitions
     OptionSelected,
     LevelMenuSelected,
     GameLost,
+    GameWon,
     Pause,
     GameActive,
     ResumeGame

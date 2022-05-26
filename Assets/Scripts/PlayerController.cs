@@ -1,4 +1,5 @@
 
+using System;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -51,6 +52,11 @@ public class PlayerController : MonoBehaviour
     {
         currentState = PlayerState.Hooked;
         rb.mass = 0.3f;
+    }
+
+    private void OnDestroy()
+    {
+        GrapplingController.unhooked -= Unhook;
     }
 
     private void Unhook()

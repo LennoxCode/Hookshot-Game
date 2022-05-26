@@ -55,7 +55,7 @@ public abstract class StateMachine<Transition> : MonoBehaviour where Transition 
     {
         Debug.Log(currentState);
         var possibleTransitons = _stateToTransitions[currentState];
-        Debug.Log(possibleTransitons.Count);
+       // Debug.Log(possibleTransitons.Count);
         var concreteTransition = possibleTransitons.FirstOrDefault(x => x.transition.Equals(transition));
         if (concreteTransition == null) return false;
         concreteTransition.from.OnExit(transition);

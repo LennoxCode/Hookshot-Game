@@ -9,6 +9,7 @@ public class SceneController : MonoBehaviour
 {
     [SerializeField] private SceneAsset[] _sceneAssets;
     public static SceneController instance;
+    public Action OnLevelLoaded;
     private void Awake()
     {
         if(instance != null){Destroy(this.gameObject);}
@@ -20,5 +21,6 @@ public class SceneController : MonoBehaviour
     public void LoadScene(int index)
     {
         SceneManager.LoadScene(_sceneAssets[index].name);
+        OnLevelLoaded?.Invoke();
     }
 }
