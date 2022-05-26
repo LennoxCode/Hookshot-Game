@@ -34,6 +34,10 @@ public class ScoreController : MonoBehaviour
         currTime = gameTime;
     }
 
+    public void CalcFinalScore()
+    {
+        
+    }
     public void SaveScore()
     {
         

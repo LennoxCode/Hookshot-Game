@@ -64,7 +64,7 @@ public abstract class StateMachine<Transition> : MonoBehaviour where Transition 
         return true;
     }
 
-    private void Start()
+    protected void Start()
     {
         if (_stateToTransitions != null) return;
         Commit();

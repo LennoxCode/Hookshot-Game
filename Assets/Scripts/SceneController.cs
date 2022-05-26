@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 public class SceneController : MonoBehaviour
 {
     [SerializeField] private SceneAsset[] _sceneAssets;
+    private int currLevelIndex = 0;
     public static SceneController instance;
     public Action OnLevelLoaded;
     private void Awake()
@@ -20,7 +21,20 @@ public class SceneController : MonoBehaviour
 
     public void LoadScene(int index)
     {
+        currLevelIndex = index;
         SceneManager.LoadScene(_sceneAssets[index].name);
         OnLevelLoaded?.Invoke();
+    }
+
+    public void LoadNextLevel()
+    {
+
+        if (currLevelIndex + 1 >= _sceneAssets.Length) return;
+        LoadScene(currLevelIndex + 1);
+    }
+
+    public void ReloadCurrLevel()
+    {
+        LoadScene(currLevelIndex);
     }
 }
