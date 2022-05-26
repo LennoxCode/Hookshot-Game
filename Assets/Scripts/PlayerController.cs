@@ -57,6 +57,7 @@ public class PlayerController : MonoBehaviour
     private void OnDestroy()
     {
         GrapplingController.unhooked -= Unhook;
+        RopeAnimationController.hookArrived -= ChangeStateToHooked;
     }
 
     private void Unhook()
