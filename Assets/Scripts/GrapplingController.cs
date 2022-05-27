@@ -64,7 +64,7 @@ public class GrapplingController : MonoBehaviour
     private void ShootHook()
     {
         FindObjectOfType<AudioManager>().Play("HookShoot");
-        Debug.Log("Sound: HookShoot");
+        //Debug.Log("Sound: HookShoot");
 
         Vector2 direction = (gunNuzzle.position - transform.position).normalized;
         if (Physics2D.Raycast(gunNuzzle.position, direction))
@@ -74,7 +74,7 @@ public class GrapplingController : MonoBehaviour
             {
                 hooked = true;
                 FindObjectOfType<AudioManager>().Play("HookAnchor");
-                Debug.Log("Sound: HookAnchor");
+                //Debug.Log("Sound: HookAnchor");
                 hookHit?.Invoke();
                 _joint2D.connectedAnchor = _hit.point;
                 grapplePoint = _hit.point;

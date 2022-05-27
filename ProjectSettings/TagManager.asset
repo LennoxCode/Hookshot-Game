@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Checkpoint
   - FinishLine
+  - LoveCats
   layers:
   - Default
   - TransparentFX
@@ -40,35 +41,23 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: BackGround_Filler
+    uniqueID: 2176833679
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Ground_Back_2
-    uniqueID: 2176833679
-    locked: 0
-  - name: Fog_Back_2
-    uniqueID: 1985792441
-    locked: 0
-  - name: Ground_Back_1
+  - name: BackGround_Hooks
     uniqueID: 2879631737
-    locked: 0
-  - name: Fog_Back_1
-    uniqueID: 3097465863
     locked: 0
   - name: Ground
     uniqueID: 1714783457
-    locked: 0
-  - name: Fog_Front_1
-    uniqueID: 2435854459
     locked: 0
   - name: Player
     uniqueID: 3322561543
     locked: 0
   - name: Ground_Front_1
     uniqueID: 4023139117
-    locked: 0
-  - name: Fog_Front_2
-    uniqueID: 2294267781
     locked: 0
   - name: Ground_Front_2
     uniqueID: 814953419

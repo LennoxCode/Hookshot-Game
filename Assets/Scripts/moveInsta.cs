@@ -2,9 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StageMoving : MonoBehaviour
+public class moveInsta : MonoBehaviour
 {
-
     [SerializeField] float distance;
     [SerializeField] float speed;
     private Vector2 startingPosition;
@@ -19,7 +18,7 @@ public class StageMoving : MonoBehaviour
     void Update()
     {
         Vector2 v = startingPosition;
-        v.x += distance;// * Mathf.Sin(Time.time * speed);
+        v.y += distance * Mathf.Sin(Time.time * speed);
         transform.position = v;
 
         
