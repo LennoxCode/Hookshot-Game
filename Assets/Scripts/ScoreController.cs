@@ -2,10 +2,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ScoreController : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField] private int MAX_SCORE;
+    [SerializeField] private Text scoreDisplay;
     public static ScoreController instance;
     public GameTime currTime { get; private set; }
 
@@ -41,7 +43,9 @@ public class ScoreController : MonoBehaviour
 
     public void CalcFinalScore()
     {
-        finalScore = Math.Min(secondsPassed - score, 0);
+        finalScore = MAX_SCORE / Math.Max(secondsPassed - score, 1);
+        scoreDisplay.text = $"{finalScore:00000}";
+
     }
     public void SaveScores()
     {
@@ -50,9 +54,8 @@ public class ScoreController : MonoBehaviour
         {
             PlayerPrefs.SetString($"{index}_name", sbe.name);
             PlayerPrefs.SetInt($"{index}_score", sbe.score);
+            index++;
         }
-        //scoreBoard.Add(new ScoreBoardEntry(name,finalScore));
-        //scoreBoard.Sort((ScoreBoardEntry sbe1, ScoreBoardEntry sbe2) => sbe1.score - sbe2.score);
     }
 
     public void LoadScores()
@@ -85,12 +88,14 @@ public class ScoreController : MonoBehaviour
     {
         score += amount;
     }
-    public struct GameTime
-    {
-        public int minutes;
-        public int seconds;
-    }
 
+    public void AddScore(string playerName)
+    {
+        scoreBoard.Add(new ScoreBoardEntry(playerName, finalScore));
+        scoreBoard.Sort((entry1, entry2) => entry2.score - entry1.score);
+        if(scoreBoard.Count > 10)scoreBoard.RemoveAt(scoreBoard.Count - 1);
+        SaveScores();
+    }
     public List<ScoreBoardEntry> GetScoreBoard()
     {
         if(scoreBoard == null ) LoadScores();
@@ -108,4 +113,10 @@ public class ScoreController : MonoBehaviour
         public int score;
         
     }
+    public struct GameTime
+    {
+        public int minutes;
+        public int seconds;
+    }
+
 }
