@@ -1,4 +1,5 @@
 
+using System;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -30,15 +31,9 @@ public class PlayerController : MonoBehaviour
     {
         int layerMask = 1 << 2;
         layerMask = ~layerMask;
-        if (rb.velocity.y < 0 && (/*currentState == PlayerState.Jumping ||*/ currentState == PlayerState.Neutral)) currentState = PlayerState.Falling;
+        if (rb.velocity.y < 0 && (currentState == PlayerState.Neutral)) currentState = PlayerState.Falling;
         bool hitGround = Physics2D.Raycast(raycastStart.position, Vector2.down, 0.1f, layerMask);
         if(hitGround && currentState == PlayerState.Falling) currentState = PlayerState.Neutral;
-        //if(currentState == PlayerState.Jumping)
-        /*if (Input.GetKeyDown(KeyCode.Space) && currentState == PlayerState.Neutral)
-        {
-            rb.AddForce(Vector2.up * jumpHeight, ForceMode2D.Impulse);
-            currentState = PlayerState.Jumping;
-        }*/
 
         if (Input.GetKey(KeyCode.Mouse0) && currentState == PlayerState.Hooked)
         {
@@ -59,20 +54,22 @@ public class PlayerController : MonoBehaviour
         rb.mass = 0.3f;
     }
 
+    private void OnDestroy()
+    {
+        GrapplingController.unhooked -= Unhook;
+        RopeAnimationController.hookArrived -= ChangeStateToHooked;
+    }
+
     private void Unhook()
     {
         rb.mass = 1;
         if (rb.velocity.magnitude == 0)
         {
             currentState = PlayerState.Neutral;    
-        }/*else if (rb.velocity.y > 0)
-        {
-            currentState = PlayerState.Jumping;
-        }*/else currentState = PlayerState.Falling;
+        } else currentState = PlayerState.Falling;
     }
     public enum PlayerState
     {
-       // Jumping,
         Falling,
         Neutral,
         Hooked
