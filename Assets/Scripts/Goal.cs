@@ -6,19 +6,12 @@ using UnityEngine;
 public class Goal : MonoBehaviour
 {
     public static Action playerEnteredGoal;
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    private bool playerHasWon = false;
 
     private void OnTriggerEnter2D(Collider2D col)
     {
+        if (playerHasWon) return;
         playerEnteredGoal?.Invoke();
+        playerHasWon = true;
     }
 }
