@@ -44,6 +44,7 @@ public class MenuStateMachine : StateMachine<MenuTransitions>
         Goal.playerEnteredGoal += () => Trigger(MenuTransitions.GameWon);
         SceneController.instance.OnLevelLoaded += () => Trigger(MenuTransitions.ResumeGame);
     }
+    
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape)) Trigger(MenuTransitions.Pause);

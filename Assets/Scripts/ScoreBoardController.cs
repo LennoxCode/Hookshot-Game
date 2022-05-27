@@ -9,10 +9,12 @@ public class ScoreBoardController : MonoBehaviour
     [SerializeField] private InputField nameInput;
     [SerializeField] private GameObject scoreEntryPrefab;
     private List<GameObject> scoreEnryGUIElements;
+    private bool addedScore = false;
    
     private void Start()
     {
         scoreEnryGUIElements = new List<GameObject>();
+        SceneController.instance.OnLevelLoaded += () => nameInput.gameObject.SetActive(true);
     }
 
     public void DisplayScoreBoard()
@@ -31,5 +33,6 @@ public class ScoreBoardController : MonoBehaviour
     {
         ScoreController.instance.AddScore(nameInput.text);
         DisplayScoreBoard();
+        nameInput.gameObject.SetActive(false);
     }
 }
