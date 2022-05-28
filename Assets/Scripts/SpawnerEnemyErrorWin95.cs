@@ -45,7 +45,7 @@ public class SpawnerEnemyErrorWin95 : MonoBehaviour
             ObjectSpawnPosition.x += 1;
             ObjectSpawnPosition.y += -1;
             Instantiate(objectToSpawn, ObjectSpawnPosition, Quaternion.identity);
-            Debug.Log("Spawn Error");
+            //Debug.Log("Spawn Error");
         }
 
         else if (positionIndex > 5)

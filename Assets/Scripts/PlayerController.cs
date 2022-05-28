@@ -41,7 +41,8 @@ public class PlayerController : MonoBehaviour
         }
         else if (Input.GetKeyUp(KeyCode.Mouse0))
         {
-            _joint2D.distance = (_joint2D.connectedAnchor - (Vector2) transform.position).magnitude;
+            _joint2D.distance = _joint2D.connectedBody ? (_joint2D.connectedBody.position - (Vector2)transform.position).magnitude : (_joint2D.connectedAnchor - (Vector2) transform.position).magnitude;
+            Debug.Log(_joint2D.distance);
         }
         if (Input.GetKey(KeyCode.A) && currentState == PlayerState.Hooked && rb.velocity.x > -5) rb.AddForce(Vector2.left * movementSpeed * rb.mass);
         if (Input.GetKey(KeyCode.D) && currentState == PlayerState.Hooked && rb.velocity.x < 5) rb.AddForce(Vector2.right * movementSpeed * rb.mass);

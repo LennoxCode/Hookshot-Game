@@ -38,6 +38,11 @@ public class GrapplingController : MonoBehaviour
         }
     }
 
+    private void LateUpdate()
+    {
+        if(_joint2D.connectedBody) grapplePoint = _joint2D.connectedBody.position;
+    }
+
     private void ShootHook()
     {
         
@@ -49,16 +54,16 @@ public class GrapplingController : MonoBehaviour
             {
                 hooked = true;
                 hookHit?.Invoke();
-                /*if (_hit.rigidbody)
+                if (_hit.rigidbody)
                 {
                     _joint2D.connectedBody = _hit.rigidbody;
                     grapplePoint = _hit.rigidbody.gameObject.transform.position;
                 }
                 else
-                {*/
+                {
                     _joint2D.connectedAnchor = _hit.point;
                     grapplePoint = _hit.point;
-                //}
+                }
                 
                 grappleOrigin = gunNuzzle.position;
                 _joint2D.enabled = true;

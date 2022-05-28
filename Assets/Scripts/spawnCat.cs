@@ -40,7 +40,7 @@ public class spawnCat : MonoBehaviour
         enemy.transform.position = new Vector2(bounds.x * -2, Random.Range(-bounds.y, bounds.y));
         
         catAmount++;
-        Debug.Log(catAmount);
+        //Debug.Log(catAmount);
         if (catAmount == 15)
         {
             spawn = false;
