@@ -14,12 +14,6 @@ public class SpawnerRandom : MonoBehaviour
         spawnRandomObject();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void spawnRandomObject()
     {
         int randomItem = 0;

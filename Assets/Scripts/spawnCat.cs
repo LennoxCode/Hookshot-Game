@@ -24,10 +24,6 @@ public class spawnCat : MonoBehaviour
             Camera.main.transform.position.z));
         StartCoroutine(startCatSpawn());
     }
-    // Update is called once per frame
-    void Update()
-    {
-    }
 
     private void OnTriggerEnter2D(Collider2D collider)
     {

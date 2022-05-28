@@ -22,13 +22,9 @@ public class GrapplingController : MonoBehaviour
     
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         grappleOrigin = gunNuzzle.position;
-    }
-
-    private void LateUpdate()
-    {
         Vector3 mousePos = viewPort.ScreenToWorldPoint(Input.mousePosition);
         
         if(Input.GetKeyDown(KeyCode.Mouse0) && !hooked) ShootHook();
@@ -37,6 +33,7 @@ public class GrapplingController : MonoBehaviour
             _joint2D.enabled = false;
             _rac.enabled = false;
             unhooked?.Invoke();
+            _joint2D.connectedBody = null;
             hooked = false;
         }
     }
@@ -52,8 +49,17 @@ public class GrapplingController : MonoBehaviour
             {
                 hooked = true;
                 hookHit?.Invoke();
-                _joint2D.connectedAnchor = _hit.point;
-                grapplePoint = _hit.point;
+                /*if (_hit.rigidbody)
+                {
+                    _joint2D.connectedBody = _hit.rigidbody;
+                    grapplePoint = _hit.rigidbody.gameObject.transform.position;
+                }
+                else
+                {*/
+                    _joint2D.connectedAnchor = _hit.point;
+                    grapplePoint = _hit.point;
+                //}
+                
                 grappleOrigin = gunNuzzle.position;
                 _joint2D.enabled = true;
                 _rac.enabled = true;

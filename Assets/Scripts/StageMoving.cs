@@ -15,8 +15,8 @@ public class StageMoving : MonoBehaviour
         startingPosition = transform.position;   
     }
 
-    // Update is called once per frame
-    void Update()
+    
+    void FixedUpdate()
     {
         Vector2 v = startingPosition;
         v.x += distance;// * Mathf.Sin(Time.time * speed);

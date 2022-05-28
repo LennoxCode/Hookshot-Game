@@ -55,7 +55,7 @@ public class RopeAnimationController : MonoBehaviour
         }
     }
 
-    private void Update()
+    private void LateUpdate()
     {
         moveTime += Time.deltaTime;
         DrawRope();

@@ -23,11 +23,6 @@ public class AudioManager : MonoBehaviour
         //https://www.youtube.com/watch?v=6OT43pvUyfY&t=207s
         s.source.Play();
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
+    
 }
 

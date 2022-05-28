@@ -14,13 +14,10 @@ public class moveInsta : MonoBehaviour
         startingPosition = transform.position;   
     }
 
-    // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         Vector2 v = startingPosition;
         v.y += distance * Mathf.Sin(Time.time * speed);
         transform.position = v;
-
-        
     }
 }

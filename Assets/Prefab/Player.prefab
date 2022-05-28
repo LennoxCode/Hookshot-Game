@@ -367,9 +367,9 @@ GameObject:
   - component: {fileID: 6933726400837162408}
   - component: {fileID: 6933726400837162423}
   - component: {fileID: 6933726400837162422}
+  - component: {fileID: 6933726400837162419}
   - component: {fileID: 6933726400837162420}
   - component: {fileID: 6933726400837162418}
-  - component: {fileID: 6933726400837162419}
   - component: {fileID: 6933726400837162421}
   m_Layer: 2
   m_Name: HookshootGun
@@ -463,6 +463,22 @@ MonoBehaviour:
   _joint2D: {fileID: 6933726400837162418}
   gunNuzzle: {fileID: 6933726399537618003}
   _rac: {fileID: 6933726399620157433}
+--- !u!114 &6933726400837162419
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6933726400837162409}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e57f673f93f03d4e9bdd44be7145aa1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentState: 0
+  movementSpeed: 0.25
+  raycastStart: {fileID: 6933726400420711279}
+  _joint2D: {fileID: 6933726400837162418}
 --- !u!50 &6933726400837162420
 Rigidbody2D:
   serializedVersion: 4
@@ -504,22 +520,6 @@ SpringJoint2D:
   m_Distance: 5.460985
   m_DampingRatio: 1
   m_Frequency: 1.17
---- !u!114 &6933726400837162419
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6933726400837162409}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e57f673f93f03d4e9bdd44be7145aa1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentState: 0
-  movementSpeed: 0.25
-  raycastStart: {fileID: 6933726400420711279}
-  _joint2D: {fileID: 6933726400837162418}
 --- !u!233 &6933726400837162421
 HingeJoint2D:
   m_ObjectHideFlags: 0
