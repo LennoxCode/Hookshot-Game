@@ -6,7 +6,14 @@ public class CheckPoint : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Checkpoint");
-        FindObjectOfType<AudioManager>().Play("CheckpointStartWin95");
+        GameObject other = collision.gameObject;
+
+        if(other.CompareTag("Player"))
+        {
+            other.GetComponent<CheckPointManager>().SetSpawnPoint(transform.position);
+
+            Debug.Log("Checkpoint");
+            FindObjectOfType<AudioManager>().Play("CheckpointStartWin95");
+        }
     }
 }

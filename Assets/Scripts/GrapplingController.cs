@@ -19,7 +19,6 @@ public class GrapplingController : MonoBehaviour
     [SerializeField] private Transform gunNuzzle;
     [SerializeField] private RopeAnimationController _rac;
     private bool hooked = false;
-    
 
     // Update is called once per frame
     private void Update()
@@ -30,17 +29,22 @@ public class GrapplingController : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Mouse0) && !hooked) ShootHook();
         if (Input.GetKeyDown(KeyCode.Mouse1))
         {
-            _joint2D.enabled = false;
-            _rac.enabled = false;
-            unhooked?.Invoke();
-            _joint2D.connectedBody = null;
-            hooked = false;
+            Unhook();
         }
     }
 
     private void LateUpdate()
     {
         if(_joint2D.connectedBody) grapplePoint = _joint2D.connectedBody.position;
+    }
+
+    public void Unhook()
+    {
+            _joint2D.enabled = false;
+            _rac.enabled = false;
+            unhooked?.Invoke();
+            _joint2D.connectedBody = null;
+            hooked = false;
     }
 
     private void ShootHook()
