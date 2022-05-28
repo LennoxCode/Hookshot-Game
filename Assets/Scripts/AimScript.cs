@@ -2,8 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Rotates the Hook according to players mouse position.
+/// </summary>
 public class AimScript : MonoBehaviour
-{
+{   
     private Camera _cam;
     // Start is called before the first frame update
     void Start()
