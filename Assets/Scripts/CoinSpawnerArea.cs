@@ -9,11 +9,13 @@ public class CoinSpawnerArea : MonoBehaviour
 {
     [SerializeField] private GameObject coinPrefab;
     [SerializeField] [Range(5, 60)] private int maxCoins;
+    [SerializeField] private bool useSeed;
     [SerializeField] private int coinSeed;
     
     void Start()
     {
-        Random.InitState(coinSeed);
+        if(useSeed)Random.InitState(coinSeed);
+        else Random.InitState(DateTime.Now.Millisecond );
         Transform t = transform;
         for (int i = 0; i < maxCoins; i++)
         {
