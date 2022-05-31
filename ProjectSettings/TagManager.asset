@@ -41,6 +41,27 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 3576436841
+    locked: 0
+  - name: BackgroundEnv
+    uniqueID: 1123677385
+    locked: 0
+  - name: GameObjects
+    uniqueID: 3049063493
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Player
+    uniqueID: 534443195
+    locked: 0
+  - name: Forground
+    uniqueID: 390243913
+    locked: 0
+  - name: ForgroundBlack
+    uniqueID: 3778563045
+    locked: 0
+  - name: New Layer 7
+    uniqueID: 3970271793
     locked: 0
