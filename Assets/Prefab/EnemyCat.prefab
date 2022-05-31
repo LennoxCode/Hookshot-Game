@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1312197234613493686}
   - component: {fileID: 8330274006821189648}
   - component: {fileID: 3589443384252018611}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Cat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -155,7 +155,7 @@ GameObject:
   - component: {fileID: 1312197234890172187}
   - component: {fileID: 1312197234890172181}
   - component: {fileID: 1312197234890172180}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Rainbow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -258,7 +258,7 @@ GameObject:
   - component: {fileID: 1312197234970204353}
   - component: {fileID: 1312197234970204355}
   - component: {fileID: 1312197234970204354}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Rainbow (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -363,7 +363,7 @@ GameObject:
   - component: {fileID: 924839538931432342}
   - component: {fileID: 6751538167693636613}
   - component: {fileID: 6751538167693636614}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: EnemyCat
   m_TagString: Untagged
   m_Icon: {fileID: 7250588514170254948, guid: 0000000000000000d000000000000000, type: 0}
@@ -481,7 +481,7 @@ GameObject:
   - component: {fileID: 1312197235384576771}
   - component: {fileID: 1312197235384576829}
   - component: {fileID: 1312197235384576828}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Rainbow (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -584,7 +584,7 @@ GameObject:
   - component: {fileID: 1312197235530480275}
   - component: {fileID: 1312197235530480269}
   - component: {fileID: 1312197235530480268}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Rainbow (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -687,7 +687,7 @@ GameObject:
   - component: {fileID: 1312197235617283968}
   - component: {fileID: 1312197235617283970}
   - component: {fileID: 1312197235617283969}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Rainbow (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -790,7 +790,7 @@ GameObject:
   - component: {fileID: 1312197235633129380}
   - component: {fileID: 1312197235633129382}
   - component: {fileID: 1312197235633129381}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Rainbow (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

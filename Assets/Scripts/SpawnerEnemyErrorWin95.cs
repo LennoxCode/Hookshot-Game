@@ -9,46 +9,29 @@ public class SpawnerEnemyErrorWin95 : MonoBehaviour
     //public Vector2 ObjectSpawnPositionOrig;
     public GameObject objectToSpawn;
     public float timeToSpawn;
-    private float currentTimeToSpawn;
-    private int positionIndex;
+    [SerializeField] [Range(0.3f, 2f)]private float currentTimeToSpawn;
     private Boolean startSpawn;
 
+    private Collider2D boxColl;
     // Start is called before the first frame update
     void Start()
     {
         //currentTimeToSpawn = timeToSpawn;
+        boxColl = GetComponent<BoxCollider2D>();
     }
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        startSpawn = true;
+        //startSpawn = true;
         Debug.Log("trigger start Spawn");
+        boxColl.enabled = false;
+        StartCoroutine(SpawnWindows());
+        
     }
     // Update is called once per frame
-    void Update()
-    {
-        if (startSpawn)
-        {
-            SpawnObject();
-        }
-        /*
-        if (startSpawn && currentTimeToSpawn > 0)
-        {
-            SpawnObject();
-            Debug.Log("Test1");
+    
 
-            //currentTimeToSpawn -= Time.deltaTime;
-        }
-        else
-        {
-            SpawnObject();
-            Debug.Log("Test2");
-            currentTimeToSpawn = timeToSpawn;
-        }
-        */
-    }
-
-    public void SpawnObject()
+    public void SpawnObject(int positionIndex)
     {
         var ObjectSpawnPosition = new Vector2(transform.position.x , transform.position.y);
         //var ObjectSpawnPosition = 0;
@@ -65,13 +48,14 @@ public class SpawnerEnemyErrorWin95 : MonoBehaviour
             ObjectSpawnPosition.y += positionIndex;
             Instantiate(objectToSpawn, ObjectSpawnPosition, Quaternion.identity);
             positionIndex++;
-            Debug.Log("Spawn Error"+ ObjectSpawnPosition + positionIndex );
+           // Debug.Log("Spawn Error"+ ObjectSpawnPosition + positionIndex );
         }
 
         else if (positionIndex > 25)
         {
-            positionIndex = 0;
-            ObjectSpawnPosition.x += positionIndex +15;
+           
+            ObjectSpawnPosition.x += positionIndex - 25;
+            ObjectSpawnPosition.y += positionIndex;
             //ObjectSpawnPosition = ObjectSpawnPositionOrig;
             Instantiate(objectToSpawn, ObjectSpawnPosition, Quaternion.identity);
 
@@ -79,5 +63,16 @@ public class SpawnerEnemyErrorWin95 : MonoBehaviour
         
         //FindObjectOfType<AudioManager>().Play("CheckpointStartWin95_2");
         //.Log("EnemyWin95");
+    }
+
+    IEnumerator SpawnWindows()
+    {
+        for (int i = 0; i < 25; i++)
+        {
+            SpawnObject(i);
+            yield return new WaitForSeconds(currentTimeToSpawn);
+        }
+        
+        
     }
 }
