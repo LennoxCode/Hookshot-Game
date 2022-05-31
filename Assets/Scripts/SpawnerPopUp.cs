@@ -7,8 +7,7 @@ public class SpawnerPopUp : MonoBehaviour
     public int numberToSpawn;
 
     [SerializeField] private GameObject[] PopUpPrefab;
-
-    public GameObject screen;
+    public GameObject page;
     
     // Start is called before the first frame update
     void Start()
@@ -19,7 +18,7 @@ public class SpawnerPopUp : MonoBehaviour
     public void spawnPopUp()
     {
         GameObject toSpawn;
-        MeshCollider collider = screen.GetComponent<MeshCollider>();
+        MeshCollider collider = page.GetComponent<MeshCollider>();
 
         float screenX, screenY;
         Vector2 pos;
@@ -28,9 +27,10 @@ public class SpawnerPopUp : MonoBehaviour
         {
             //int randomPopUp = Random.Range(0, PopUpPrefab.Length);
             toSpawn = PopUpPrefab[Random.Range(0, PopUpPrefab.Length)];
-            screenX = Random.Range(collider.bounds.min.x, collider.bounds.max.x);
-            screenY = Random.Range(collider.bounds.min.y, collider.bounds.max.y);
-            pos = new Vector2(screenX, screenY);
+            var pageWidth = Random.Range(collider.bounds.min.x, collider.bounds.max.x);
+            var pageHight = Random.Range(collider.bounds.min.y, collider.bounds.max.y);
+            pos = new Vector2(pageWidth, pageHight);
+            Debug.Log(pageHight);
 
             Instantiate(toSpawn, pos, toSpawn.transform.rotation);
         }
