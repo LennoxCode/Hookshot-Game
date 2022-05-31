@@ -72,8 +72,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1415335559
-  m_SortingLayer: 2
+  m_SortingLayerID: -1245903803
+  m_SortingLayer: 4
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: dc929dad73b67bf4d82f5e74ecc21845, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -111,7 +111,7 @@ MonoBehaviour:
   - {x: 6.3999996, y: -6.4, z: 0}
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
-  m_InstanceId: -51878
+  m_InstanceId: 214296
 --- !u!61 &1206562061871603638
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -148,6 +148,14 @@ PrefabInstance:
     - target: {fileID: 4527975410801542534, guid: 09688ba8804ab7844916b49c535452c1, type: 3}
       propertyPath: m_Name
       value: FrameContent
+      objectReference: {fileID: 0}
+    - target: {fileID: 4527975410801542584, guid: 09688ba8804ab7844916b49c535452c1, type: 3}
+      propertyPath: m_SortingLayer
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4527975410801542584, guid: 09688ba8804ab7844916b49c535452c1, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1245903803
       objectReference: {fileID: 0}
     - target: {fileID: 4527975410801542585, guid: 09688ba8804ab7844916b49c535452c1, type: 3}
       propertyPath: m_RootOrder

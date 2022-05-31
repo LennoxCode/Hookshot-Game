@@ -17,4 +17,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SampleScene 1.unity
     guid: 955714d4711777c4aa9109887bd78353
+  - enabled: 1
+    path: Assets/Scenes/CaptionHookTutorial.unity
+    guid: 12e206ee04a908445af58b55b5e638b2
+  - enabled: 1
+    path: Assets/Scenes/CaptionHookLevel01.unity
+    guid: 460a32888bf7c7443a7cec7467097f74
+  - enabled: 1
+    path: Assets/Scenes/CaptionHookLevel02.unity
+    guid: 190a392e54635fe4e94ee8ca076895ee
+  - enabled: 1
+    path: Assets/Scenes/CaptionHookLevel03.unity
+    guid: e1848c4894d5bab4da27481251e5278b
   m_configObjects: {}
