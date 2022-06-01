@@ -11,39 +11,34 @@ public class SpawnerCat : MonoBehaviour
     private Vector2 bounds;
     [SerializeField][Range(1f,20f)] private float respawnTime = 2f;
     [SerializeField] private int catWaves;
-    private bool clicked = false;
-   
-    
-    private IEnumerator spawnCats()
-    {
-        // spwan enemy left screen bounds in random y position
-        
-        FindObjectOfType<AudioManager>().Play("Cat");
-        for (int i = 0; i < 10; i++)
-        {
-            GameObject enemy = Instantiate(cat) as GameObject;
-            enemy.transform.position = new Vector2( spawnPos.position.x, 
-                spawnPos.position.y + Random.Range(-5, 5));
-            yield return new WaitForSeconds(0.5f);
-        }
-
-    }
-
-    IEnumerator startCatSpawn()
-    {
-        for (int i = 0; i < catWaves; i++)
-        {
-            Debug.Log("spawn cats");
-            yield return new WaitForSeconds(respawnTime);
-            yield return spawnCats();
-
-        }
-    }
-
+    private bool clicked;
     private void OnMouseDown()
     {
         if (clicked) return;
         clicked = true;
         StartCoroutine(startCatSpawn());
+    }
+    IEnumerator startCatSpawn()
+    {
+        for (int i = 0; i < catWaves; i++)
+        {
+            //Debug.Log("spawn CatWave");
+            // Wait for individual Respawn Time
+            yield return new WaitForSeconds(respawnTime);
+            // Wait until the spawnCats is finished
+            yield return spawnCats();
+        }
+    }
+    private IEnumerator spawnCats()
+    {
+        FindObjectOfType<AudioManager>().Play("Cat");
+        for (int i = 0; i < 10; i++)
+        {
+            GameObject enemy = Instantiate(cat) as GameObject;
+            // spwan enemy left screen bounds in random y position
+            enemy.transform.position = new Vector2( spawnPos.position.x, 
+                spawnPos.position.y + Random.Range(-5, 5));
+            yield return new WaitForSeconds(0.5f);
+        }
     }
 }
