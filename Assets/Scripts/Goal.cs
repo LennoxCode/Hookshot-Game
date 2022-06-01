@@ -15,6 +15,7 @@ public class Goal : MonoBehaviour
     {
         if (playerHasWon || !col.gameObject.CompareTag("Player")) return;
         playerEnteredGoal?.Invoke();
+        AudioManager.instance.Play("Win");
         playerHasWon = true;
     }
 }

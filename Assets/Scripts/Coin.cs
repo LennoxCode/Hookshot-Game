@@ -14,7 +14,10 @@ public class Coin : MonoBehaviour
     {
         if (!col.CompareTag("Player")) return;
         ScoreController.instance.IncrementScore(value);
+        AudioManager.instance.Play("Coin");
+
         Destroy(gameObject);
+
     }
 
 

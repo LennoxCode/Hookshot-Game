@@ -70,10 +70,14 @@ public class GrapplingController : MonoBehaviour
         Vector2 direction = (gunNuzzle.position - transform.position).normalized;
 
         RaycastHit2D _hit = Physics2D.Raycast(gunNuzzle.position, direction, maxDistance);
+        AudioManager.instance.Play("HookShoot");
+
 
         if (_hit) // if object in reach has been hit
         {
             hooked = true;
+            AudioManager.instance.Play("HookAnchor");
+
             hookHit?.Invoke();
 
             if (_hit.rigidbody) // if hit object has rigidbody (only moving Obstacles)

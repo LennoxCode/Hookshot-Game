@@ -12,7 +12,7 @@ using UnityEngine.SceneManagement;
 /// </summary>
 public class SceneController : MonoBehaviour
 {
-    [SerializeField] private SceneAsset[] _sceneAssets;
+    //[SerializeField] private SceneAsset[] _sceneAssets;
     public int currLevelIndex { private set; get; } 
     public static SceneController instance;
     public Action OnLevelLoaded;
@@ -25,16 +25,20 @@ public class SceneController : MonoBehaviour
     }
 
     public void LoadScene(int index)
+    
     {
         currLevelIndex = index;
-        SceneManager.LoadScene(_sceneAssets[index].name);
+        //SceneManager.LoadScene(_sceneAssets[index].name);
+        SceneManager.LoadScene(index);
         OnLevelLoaded?.Invoke();
+        
     }
 
     public void LoadNextLevel()
     {
-
-        if (currLevelIndex + 1 >= _sceneAssets.Length) return;
+        Debug.Log(SceneManager.sceneCount);
+        if (currLevelIndex + 1 >= SceneManager.sceneCountInBuildSettings) return;
+        Debug.Log("got past return");
         LoadScene(currLevelIndex + 1);
     }
 

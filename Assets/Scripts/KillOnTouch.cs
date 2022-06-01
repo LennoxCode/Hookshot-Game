@@ -21,4 +21,15 @@ public class KillOnTouch : MonoBehaviour
 
         }
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        GameObject other = collision.gameObject;
+
+        if (other.CompareTag("Player"))
+        {
+            other.GetComponent<CheckPointManager>().KillPlayer(deathDelay);
+            AudioManager.instance.Play("KillOnTouch");
+
+        }
+    }
 }

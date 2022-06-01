@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,6 +12,8 @@ public class ControlDisable : MonoBehaviour
     {
         CheckPointManager.playerDeath += DisableControls;
         CheckPointManager.playerRespawn += EnableControls;
+        GameStateMachine.instance.gamePaused += DisableControls;
+        GameStateMachine.instance.gameResumed += EnableControls;
     }
 
     public void DisableControls()
@@ -22,5 +25,13 @@ public class ControlDisable : MonoBehaviour
     public void EnableControls()
     {
         grapController.enabled = true;
+    }
+
+    private void OnDestroy()
+    {
+        CheckPointManager.playerDeath -= DisableControls;
+        CheckPointManager.playerRespawn -= EnableControls;
+        GameStateMachine.instance.gamePaused -= DisableControls;
+        GameStateMachine.instance.gameResumed -= EnableControls;
     }
 }

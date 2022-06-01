@@ -20,6 +20,12 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        int currLevelIndex = SceneController.instance.currLevelIndex;
+        Play($"Level{currLevelIndex-1:00}");
+    }
+
     public void Play(string name)
     {
         SoundFiles s = Array.Find(sounds, sound => sound.name == name);
