@@ -3,6 +3,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+/// <summary>
+/// this script is responsible for animating the rope of the grappling hook and is inspired by this tutorial:
+/// https://www.youtube.com/watch?v=dnNCVcVS6uw&t=21s
+/// I really liked this tutorial because it it actually dealt with animating the rope which is the difficult part
+/// of a grappling hook. by using an exchangeable animation curve it is very customizable and sprite
+/// of the hook can be replaced and the animation still works. the main animation basically triggers on enable
+/// which happens if the hook connects with a target. after the animation is finished an event is omitted
+/// to make the player able to pull themself to the anchor of the hook
+/// </summary>
 public class RopeAnimationController : MonoBehaviour
 {
     public static Action hookArrived;

@@ -1,4 +1,8 @@
 ﻿using System;
+/// <summary>
+/// this class was taken from the slides
+/// this class is just a value holder to represent which state can transition to which state 
+/// </summary>
 [Serializable]
 public class TransitionConnection<Transition> where Transition : struct, Enum
 {

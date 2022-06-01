@@ -4,7 +4,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-
+/// <summary>
+/// this script is responsible for spawning the coin object randomly in a given area
+/// I opted to use this random spawner because it would make the creation of levels a lot easier by not
+/// having to manually place coins everywhere and in addition it could spice up playthroughs in the future
+/// if the seed is removed
+/// this works using the scale and positon of the GameObject this script is attached to form the Range of random
+/// generation. Afterwards the prefabs just have to be instantiated.
+/// Additionally all the parameters can be changed in editor to make it customizable for each area
+/// </summary>
 public class CoinSpawnerArea : MonoBehaviour
 {
     [SerializeField] private GameObject coinPrefab;

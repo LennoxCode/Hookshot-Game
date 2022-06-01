@@ -2,7 +2,13 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Object = System.Object;
-
+/// <summary>
+/// this is the final implementation of the statemachine presented in the lesson slides.
+/// it has a state for every part of the GUI which are trigger by buttons to from the main menu state to
+/// the level select state for example. In addition some transitions trigger based on events like
+/// the win state which cant be triggered by a button(maybe for the casuals in the future) I used an
+/// anonymous function which is subscribed to the event to trigger this event
+/// </summary>
 public class MenuStateMachine : StateMachine<MenuTransitions>
 {
     public static MenuStateMachine instance;

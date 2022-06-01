@@ -3,7 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
-
+/// <summary>
+/// this Script controls the movement of the Camera by chasing the player and is inspired by this tutorial:
+/// https://www.youtube.com/watch?v=GTxiCzvYNOc
+/// this works by setting the offset vector in the editor which represents a Rectangle.
+/// If the player leaves this rectangle the camera follows the player with the speed set in the editor
+/// or if the velocity on the rigidbody is greater follows matches this speed this camera design
+/// is commonly found in old platformers because it leads to smoother camera transitions, and
+/// the camera does not clip outside of the level as easily as with a simple follow 
+/// </summary>
 public class CameraController : MonoBehaviour
 {
     [Header("Options")]

@@ -2,7 +2,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/// <summary>
+/// this a very simple script. if the player collects a coin by entering the trigger
+/// the object is destroyed and the score is incremented
+/// </summary>
 public class Coin : MonoBehaviour
 {
     
