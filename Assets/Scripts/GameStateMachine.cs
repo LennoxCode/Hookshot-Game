@@ -5,7 +5,8 @@ public class GameStateMachine : MonoBehaviour
 {
     public static GameStateMachine instance;
     public GameState currState { private set; get; }
-
+    public Action gamePaused;
+    public Action gameResumed;
     private void Awake()
     {
         if(instance != null){Destroy(gameObject);}
@@ -30,6 +31,7 @@ public class GameStateMachine : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.Escape))
                 {
                     currState = GameState.Pause;
+                    gamePaused?.Invoke();
                 }
                 break;
             case GameState.Pause:
@@ -37,6 +39,7 @@ public class GameStateMachine : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.Escape))
                 {
                     currState = GameState.Active;
+                    gameResumed?.Invoke();
                 }
 
                 break;

@@ -5,9 +5,11 @@ using System;
 public class AudioManager : MonoBehaviour
 {
     public SoundFiles[] sounds;
-
+    public static AudioManager instance; 
     void Awake()
     {
+        if(instance != null) Destroy(this);
+        instance = this;
         float soundVolume = PlayerPrefs.GetFloat("audio_volume", 1.0f);
         foreach (SoundFiles s in sounds)
         {

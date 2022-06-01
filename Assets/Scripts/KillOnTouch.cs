@@ -14,7 +14,7 @@ public class KillOnTouch : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             other.GetComponent<CheckPointManager>().KillPlayer(deathDelay);
-            FindObjectOfType<AudioManager>().Play("KillOnTouch");
+            AudioManager.instance.Play("KillOnTouch");
 
         }
     }
