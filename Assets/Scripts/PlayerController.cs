@@ -69,6 +69,12 @@ public class PlayerController : MonoBehaviour
         currentState = PlayerState.Neutral;    
     }
 
+    private void OnDestroy()
+    {
+        RopeAnimationController.hookArrived -= ChangeStateToHooked;
+        GrapplingController.unhooked -= Unhook;
+    }
+
     public enum PlayerState
     {
         Neutral,

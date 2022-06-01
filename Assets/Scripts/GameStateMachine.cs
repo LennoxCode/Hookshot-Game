@@ -26,16 +26,16 @@ public class GameStateMachine : MonoBehaviour
         switch (currState)
         {
             case GameState.Active:
+                Time.timeScale = 1f;
                 if (Input.GetKeyDown(KeyCode.Escape))
                 {
-                    Time.timeScale = 0f;
                     currState = GameState.Pause;
                 }
                 break;
             case GameState.Pause:
+                Time.timeScale = 0f;
                 if (Input.GetKeyDown(KeyCode.Escape))
                 {
-                    Time.timeScale = 1f;
                     currState = GameState.Active;
                 }
 

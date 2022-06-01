@@ -4623,7 +4623,7 @@ GameObject:
   - component: {fileID: 1004409608}
   - component: {fileID: 1004409607}
   m_Layer: 5
-  m_Name: OptionButton
+  m_Name: RestartButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4693,10 +4693,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 471255244}
-        m_TargetAssemblyTypeName: StateMachine`1[[MenuTransitions, Assembly-CSharp
-        m_MethodName: Trigger
-        m_Mode: 5
+      - m_Target: {fileID: 546745398}
+        m_TargetAssemblyTypeName: SceneController, Assembly-CSharp
+        m_MethodName: ReloadCurrLevel
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -6457,7 +6457,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Options
+  m_Text: Restart
 --- !u!222 &1583945804
 CanvasRenderer:
   m_ObjectHideFlags: 0

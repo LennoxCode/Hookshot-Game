@@ -8,11 +8,12 @@ public class AudioManager : MonoBehaviour
 
     void Awake()
     {
+        float soundVolume = PlayerPrefs.GetFloat("audio_volume", 1.0f);
         foreach (SoundFiles s in sounds)
         {
             s.source = gameObject.AddComponent<AudioSource>();
             s.source.clip = s.clip;
-            s.source.volume = s.volume;
+            s.source.volume = s.volume * soundVolume;
             s.source.pitch = s.pitch;
         }
     }

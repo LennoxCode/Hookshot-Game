@@ -147,7 +147,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3589620}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -39.77, y: -0.04, z: 7.7985983}
+  m_LocalPosition: {x: -51.92, y: -0.04, z: 7.7985983}
   m_LocalScale: {x: 2.1967883, y: 2.1967883, z: 2.1967883}
   m_Children: []
   m_Father: {fileID: 366038625}
@@ -3037,8 +3037,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c65938b4efc96649a31989c5c22f777, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  followSpeed: 0
-  followOffset: {x: 0, y: 0}
+  followSpeed: 4.84
+  followOffset: {x: 8.74, y: 2.39}
   playerObject: {fileID: 1396100785}
 --- !u!20 &519420031
 Camera:
