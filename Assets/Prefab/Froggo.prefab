@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8529962671701345906}
   - component: {fileID: 8529962671701345905}
   - component: {fileID: 8529962671701345904}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Froggo
   m_TagString: Untagged
   m_Icon: {fileID: 0}

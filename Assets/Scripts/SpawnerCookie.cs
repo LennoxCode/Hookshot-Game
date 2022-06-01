@@ -26,8 +26,8 @@ public class SpawnerCookie : MonoBehaviour
 
     public void OnTriggerExit2D(Collider2D collider)
     {
-        startToSpawn = false;
-        Debug.Log("False");
+       // startToSpawn = false;
+       // Debug.Log("False");
     }
  
     IEnumerator SpawnCookie()

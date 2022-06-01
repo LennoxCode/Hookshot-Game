@@ -40,11 +40,11 @@ public class SpawnerPopUp : MonoBehaviour
     }
     IEnumerator spawnPopUp()
     {
-        for (int i = 0; i < numberToSpawn; i++)
+        for (int i = 0; i < PopUpPrefab.Length; i++)
         {
-            SpawnObject(i);
+            PopUpPrefab[i].SetActive(true);
             yield return new WaitForSeconds(startToSpawn);
-            Destroy(gameObject, startToSpawn);
+           // Destroy(gameObject, startToSpawn);
         }
     }
     // Update is called once per frame

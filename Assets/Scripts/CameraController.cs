@@ -30,6 +30,7 @@ public class CameraController : MonoBehaviour
         calculateThreshhold();
         playerPos = playerObject.transform;
         playerRB = playerObject.GetComponent<Rigidbody2D>();
+        CheckPointManager.playerRespawn += () => transform.position = playerPos.position;
     }
     //TODO: reset the camera to the player pos upon restarting or resetting to a checkpoint
     private void LateUpdate()
@@ -67,4 +68,5 @@ public class CameraController : MonoBehaviour
         Gizmos.color = Color.green;
         Gizmos.DrawWireCube(transform.position, new Vector3(threshhold.x * 2, threshhold.y * 2));
     }
+    
 }
