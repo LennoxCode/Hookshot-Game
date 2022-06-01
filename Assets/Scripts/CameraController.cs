@@ -30,7 +30,7 @@ public class CameraController : MonoBehaviour
         calculateThreshhold();
         playerPos = playerObject.transform;
         playerRB = playerObject.GetComponent<Rigidbody2D>();
-        CheckPointManager.playerRespawn += () => transform.position = playerPos.position;
+        CheckPointManager.playerRespawn += () => transform.position = new Vector3(playerPos.position.x, playerPos.position.y ,transform.position.z);
     }
     //TODO: reset the camera to the player pos upon restarting or resetting to a checkpoint
     private void LateUpdate()

@@ -31,7 +31,7 @@ public class SpawnerCat : MonoBehaviour
     }
     private IEnumerator spawnCats()
     {
-        FindObjectOfType<AudioManager>().Play("Cat");
+        AudioManager.instance.Play("Cat");
         for (int i = 0; i < 10; i++)
         {
             GameObject enemy = Instantiate(cat) as GameObject;
