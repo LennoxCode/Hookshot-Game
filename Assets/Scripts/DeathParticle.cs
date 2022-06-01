@@ -18,4 +18,9 @@ public class DeathParticle : MonoBehaviour
     {
         ps.Play();
     }
+
+    private void OnDestroy()
+    {
+        CheckPointManager.playerDeath -= Play;
+    }
 }

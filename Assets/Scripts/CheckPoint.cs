@@ -17,6 +17,8 @@ public class CheckPoint : MonoBehaviour
             // play sound
             Debug.Log("Checkpoint");
             FindObjectOfType<AudioManager>().Play("CheckpointStartWin95");
+            // disable this checkpoint
+            gameObject.SetActive(false);
         }
     }
 }

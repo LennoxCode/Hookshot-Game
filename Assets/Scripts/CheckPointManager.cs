@@ -16,6 +16,12 @@ public class CheckPointManager : MonoBehaviour
     // global variables
     private Coroutine currentCoroutine;
 
+
+    private void Awake()
+    {
+        playerDeath = null;
+        playerRespawn = null;
+    }
     /// <summary>
     /// sets position of spawnpoint game object to given position
     /// </summary>
