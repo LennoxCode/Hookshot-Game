@@ -1180,7 +1180,7 @@ GameObject:
   - component: {fileID: 149952864}
   - component: {fileID: 149952863}
   - component: {fileID: 149952862}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: CheckPointLine
   m_TagString: Checkpoint
   m_Icon: {fileID: 0}
@@ -4700,7 +4700,7 @@ GameObject:
   - component: {fileID: 970552066}
   - component: {fileID: 970552065}
   - component: {fileID: 970552067}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: CheckPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6373,7 +6373,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ce65bb4f4b273549b9268e99f6eb8e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnPoint: {fileID: 0}
+  spawnPoint: {fileID: 1791698379}
   rb: {fileID: 1396100786}
 --- !u!1 &1404891182
 GameObject:
@@ -7201,7 +7201,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 148533543770855270, guid: fc0bfced13e5a9a438ffc0ece9c1d3d8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.68
+      value: 7.38
       objectReference: {fileID: 0}
     - target: {fileID: 148533543770855270, guid: fc0bfced13e5a9a438ffc0ece9c1d3d8, type: 3}
       propertyPath: m_LocalPosition.z
@@ -7278,6 +7278,11 @@ Transform:
   m_Father: {fileID: 1343512568}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1791698379 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 148533543770855270, guid: fc0bfced13e5a9a438ffc0ece9c1d3d8, type: 3}
+  m_PrefabInstance: {fileID: 1728411410}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1796453711
 GameObject:
   m_ObjectHideFlags: 0

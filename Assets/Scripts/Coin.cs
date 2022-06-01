@@ -12,6 +12,7 @@ public class Coin : MonoBehaviour
     [SerializeField] private int value;
     private void OnTriggerEnter2D(Collider2D col)
     {
+        if (!col.CompareTag("Player")) return;
         ScoreController.instance.IncrementScore(value);
         Destroy(gameObject);
     }

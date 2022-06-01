@@ -31,7 +31,7 @@ public class CameraController : MonoBehaviour
         playerPos = playerObject.transform;
         playerRB = playerObject.GetComponent<Rigidbody2D>();
     }
-    
+    //TODO: reset the camera to the player pos upon restarting or resetting to a checkpoint
     private void LateUpdate()
     {
         Vector2 follow = playerPos.position;
