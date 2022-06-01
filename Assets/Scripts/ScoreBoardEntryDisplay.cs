@@ -2,7 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+/// <summary>
+/// this class exists so the scoebaordGUIController can easily instantiate and change
+/// the name and score of each entry
+/// </summary>
 public class ScoreBoardEntryDisplay : MonoBehaviour
 {
    [SerializeField] private Text nameDisplay;

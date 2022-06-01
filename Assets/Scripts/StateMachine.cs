@@ -3,7 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using JetBrains.Annotations;
 using UnityEngine;
-
+/// <summary>
+/// this class was taken from the slides
+/// this class for the StateMachine is abstract so it cant be instantiated, so a concrete stateMachine implementation
+/// class muss inherit from it. However this provides base functionality like triggering a transition( the fact
+/// that a state handler is an interface comes in handy again). the functionality of changing through states
+/// is mainly realized by a dictionary which uses a statehandler as a key and provides a list of viable transitions
+/// from this state
+/// </summary>
 public abstract class StateMachine<Transition> : MonoBehaviour where Transition : struct, Enum
 {
     [SerializeField] private List<TransitionConnection<Transition>> transitions;
