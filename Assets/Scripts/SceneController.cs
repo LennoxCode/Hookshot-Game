@@ -25,10 +25,12 @@ public class SceneController : MonoBehaviour
     }
 
     public void LoadScene(int index)
+    
     {
         currLevelIndex = index;
         SceneManager.LoadScene(_sceneAssets[index].name);
         OnLevelLoaded?.Invoke();
+        
     }
 
     public void LoadNextLevel()
