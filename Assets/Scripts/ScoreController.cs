@@ -3,7 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+/// <summary>
+/// This class is responsible for calculating and saving scores. the score calculation is subscribed to
+/// the goal entered event and just divides the max possible score by the seconds passed minus the sum of the collected
+/// coin values. In addition this class also holds a Scoreboard which concists of 10 scoreboard entries with
+/// a name and and score attached. After finishing a level the player can add his score and the board is sorted.
+/// I opted to use Playerprefs with string interpolation to save via scoreboard rank
+/// and level id. I know this is not the best way but I found it simpler then adding all the boilerplate code
+/// for proper IO management 
+/// </summary>
 public class ScoreController : MonoBehaviour
 {
     [SerializeField] private int MAX_SCORE;
@@ -27,6 +35,7 @@ public class ScoreController : MonoBehaviour
     void Start()
     {
         SceneController.instance.OnLevelLoaded += ResetScore;
+        SceneController.instance.OnLevelLoaded += LoadScores;
         secondsPassed = 0;
         StartCoroutine(IncrementTime());
         Goal.playerEnteredGoal += CalcFinalScore;
@@ -49,23 +58,25 @@ public class ScoreController : MonoBehaviour
     }
     public void SaveScores()
     {
+        int levelIndex = SceneController.instance.currLevelIndex;
         int index = 0;
         foreach (ScoreBoardEntry sbe  in scoreBoard)
         {
-            PlayerPrefs.SetString($"{index}_name", sbe.name);
-            PlayerPrefs.SetInt($"{index}_score", sbe.score);
+            PlayerPrefs.SetString($"lvl_{levelIndex}_{index}_name", sbe.name);
+            PlayerPrefs.SetInt($"lvl_{levelIndex}_{index}_score", sbe.score);
             index++;
         }
     }
 
     public void LoadScores()
     {
+        int levelIndex = SceneController.instance.currLevelIndex;
         scoreBoard = new List<ScoreBoardEntry>();
         for (int i = 0; i < 10; i++)
         {
-            if(!PlayerPrefs.HasKey($"{i}_name")) break;
-            string name = PlayerPrefs.GetString($"{i}_name");
-            int score = PlayerPrefs.GetInt($"{i}_score");
+            if(!PlayerPrefs.HasKey($"lvl_{levelIndex}_{i}_name")) break;
+            string name = PlayerPrefs.GetString($"lvl_{levelIndex}_{i}_name");
+            int score = PlayerPrefs.GetInt($"lvl_{levelIndex}_{i}_score");
             scoreBoard.Add(new ScoreBoardEntry(name, score));
         }
     }
