@@ -7,14 +7,24 @@ public class PacFoodDropper : MonoBehaviour
 {
     public GameObject Container;
 
-    [SerializeField] public int dropCounter = 5;
+    [SerializeField] public int dropCounter = 20;
     [SerializeField] private GameObject PacFood;
     [SerializeField] private Collider2D thisCollider;
-    [SerializeField] private float timeBetweenDrops = 3f;
+    [SerializeField] private float timeBetweenDrops = 0.5f;
     [SerializeField] private PacManScript PacMan;
+    [SerializeField] private Sprite[] sprites;
+       
+    private SpriteRenderer spriteRenderer;
 
     private bool _collected = false;
     private Transform _playerTransform;
+    private int originalDrops;
+
+    private void Awake()
+    {
+        originalDrops = dropCounter;
+        spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -46,6 +56,7 @@ public class PacFoodDropper : MonoBehaviour
         
         while(dropCounter > 0)
         {
+            spriteRenderer.sprite = ChangeSprite();
             DropOne();
             dropCounter--;
             if(dropCounter>0) yield return new WaitForSeconds(timeBetweenDrops);
@@ -53,4 +64,14 @@ public class PacFoodDropper : MonoBehaviour
         Destroy(gameObject);
     }
 
+    private Sprite ChangeSprite()
+    {
+        float relativeAmount = (float)dropCounter / (float)originalDrops;
+
+        if (relativeAmount < 0.2) return sprites[4];
+        if (relativeAmount < 0.4) return sprites[3];
+        if (relativeAmount < 0.6) return sprites[2];
+        if (relativeAmount < 0.8) return sprites[1];
+        return sprites[0];
+    }
 }
