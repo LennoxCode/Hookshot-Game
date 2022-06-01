@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// sits on game object with particle system and plays on player death action
+/// </summary>
 public class DeathParticle : MonoBehaviour
 {
     [SerializeField] private ParticleSystem ps;
 
-    // Start is called before the first frame update
     void Start()
     {
         CheckPointManager.playerDeath += Play;

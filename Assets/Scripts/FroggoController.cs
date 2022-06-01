@@ -4,12 +4,16 @@ using UnityEngine;
 
 public class FroggoController : MonoBehaviour
 {
+    // serialized values
     [SerializeField] private float idleTime;
     [SerializeField] private float chargeTime;
     [SerializeField] private float speed;
+
+    // references
     [SerializeField] private SpriteRenderer sr;
     [SerializeField] private Sprite[] sprites;
 
+    // global variables
     private FrogState state = FrogState.Charging;
     private float timer = 0f;
 
@@ -19,6 +23,8 @@ public class FroggoController : MonoBehaviour
         switch (state)
         {
             case FrogState.Idle:
+
+                // count up timer and set state to charging, set sprite to charging
                 timer += Time.deltaTime;
                 if (timer >= idleTime)
                 {
@@ -29,6 +35,8 @@ public class FroggoController : MonoBehaviour
                 break;
 
             case FrogState.Charging:
+
+                // count up timer and set state to jumping, set sprite to jumping
                 timer += Time.deltaTime;
                 if (timer >= chargeTime)
                 {
@@ -42,6 +50,7 @@ public class FroggoController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        // move frog upwards if state is jumping
         if(state == FrogState.Jumping)
         {
             transform.position += transform.up * speed * Time.deltaTime;
@@ -50,14 +59,19 @@ public class FroggoController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        // return if frog isn't jumping or colliding object is the player
         if (state != FrogState.Jumping) return;
         if (collision.gameObject.CompareTag("Player")) return;
 
+        // turn upside down, set state to idle, set sprite to idle
         transform.up = -transform.TransformDirection(Vector3.up);
         state = FrogState.Idle;
         RefreshSprite();
     }
 
+    /// <summary>
+    /// sets sprite according to current state
+    /// </summary>
     private void RefreshSprite()
     {
         sr.sprite = sprites[(int) state];

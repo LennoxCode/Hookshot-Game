@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// counts up time and then destroys this game object
+/// </summary>
 public class SelfDestruct : MonoBehaviour
 {
     [SerializeField] private float timeToDestruct;

@@ -5,19 +5,28 @@ using UnityEngine;
 
 public class CheckPointManager : MonoBehaviour
 {
+    // delegates
     public static Action playerDeath;
     public static Action playerRespawn;
 
+    // references
     [SerializeField] private Transform spawnPoint;
     [SerializeField] private Rigidbody2D rb;
 
+    // global variables
     private Coroutine currentCoroutine;
 
+    /// <summary>
+    /// sets position of spawnpoint game object to given position
+    /// </summary>
     public void SetSpawnPoint(Vector3 newPosition)
     {
         spawnPoint.position = newPosition;
     }
 
+    /// <summary>
+    /// invokes death and starts respawn coroutine
+    /// </summary>
     public void KillPlayer(float delay = 0f)
     {
         if (currentCoroutine != null) return;
@@ -26,6 +35,9 @@ public class CheckPointManager : MonoBehaviour
         currentCoroutine = StartCoroutine(RespawnRoutine(delay));
     }
 
+    /// <summary>
+    /// waits for given seconds, sets player to respawn point and invokes respawn
+    /// </summary>
     private IEnumerator RespawnRoutine(float delay)
     {
         yield return new WaitForSeconds(delay);
