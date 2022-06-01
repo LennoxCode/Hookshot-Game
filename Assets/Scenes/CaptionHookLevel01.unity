@@ -3038,7 +3038,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   followSpeed: 3.98
-  followOffset: {x: 7.93, y: 3.75}
+  followOffset: {x: 14.98, y: 3.75}
   playerObject: {fileID: 1396100785}
 --- !u!20 &519420031
 Camera:
@@ -3091,7 +3091,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 48.169994, y: 15.12, z: 30.089409}
+  m_LocalPosition: {x: 48.049995, y: 15.079993, z: 30.089409}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 863564801}
@@ -3521,7 +3521,7 @@ PrefabInstance:
       objectReference: {fileID: 322240439}
     - target: {fileID: 6933726400837162422, guid: d375463e4058bfc4cbe51111858d5a6c, type: 3}
       propertyPath: maxDistance
-      value: 12.14
+      value: 12.5
       objectReference: {fileID: 0}
     - target: {fileID: 6933726400837162423, guid: d375463e4058bfc4cbe51111858d5a6c, type: 3}
       propertyPath: m_SortingLayer
@@ -3553,11 +3553,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6933726400870206839, guid: d375463e4058bfc4cbe51111858d5a6c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 39.42
+      value: 39.3
       objectReference: {fileID: 0}
     - target: {fileID: 6933726400870206839, guid: d375463e4058bfc4cbe51111858d5a6c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 11.34
+      value: 11.3
       objectReference: {fileID: 0}
     - target: {fileID: 6933726400870206839, guid: d375463e4058bfc4cbe51111858d5a6c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6206,7 +6206,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1960447543408017112, guid: 6a79fdfcfcee8984ab29c34032b3b9fb, type: 3}
       propertyPath: m_SortingLayer
-      value: 4
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 1960447543408017112, guid: 6a79fdfcfcee8984ab29c34032b3b9fb, type: 3}
       propertyPath: m_SortingLayerID
