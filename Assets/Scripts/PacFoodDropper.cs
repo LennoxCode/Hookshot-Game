@@ -3,32 +3,37 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Drops Food for Pac Man
+/// </summary>
 public class PacFoodDropper : MonoBehaviour
 {
-    public GameObject Container;
+    public GameObject Container; // holds spawned PacFoods
 
-    [SerializeField] public int dropCounter = 20;
-    [SerializeField] private GameObject PacFood;
+    [SerializeField] public int dropCounter = 20; // how many shall be spawned?
+    [SerializeField] private GameObject PacFood; // what shall be spawned?
     [SerializeField] private Collider2D thisCollider;
     [SerializeField] private float timeBetweenDrops = 0.5f;
-    [SerializeField] private PacManScript PacMan;
-    [SerializeField] private Sprite[] sprites;
-       
+    [SerializeField] private PacManScript PacMan; // Pac Man reference
+    [SerializeField] private Sprite[] sprites; // for Animation 
+
     private SpriteRenderer spriteRenderer;
 
     private bool _collected = false;
     private Transform _playerTransform;
-    private int originalDrops;
+    private int originalDrops; // how many drops initally?
 
     private void Awake()
     {
+        // Assign references
         originalDrops = dropCounter;
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag.Equals("Player") && !_collected)
+        // If bag has been touched by player -> Move bag alongside player and awake the PacMan
+        if (collision.gameObject.tag.Equals("Player") && !_collected)
         {
             _playerTransform = collision.gameObject.transform;
             _collected = true;
@@ -41,29 +46,40 @@ public class PacFoodDropper : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Drops one Food Prefab in Container
+    /// </summary>
     private void DropOne()
     {
         GameObject food = Instantiate(PacFood, _playerTransform);
         food.transform.SetParent(Container.transform);
         food.tag = "PacFood";
 
-        food.transform.localScale = new Vector3(5, 5, 1);
+        food.transform.localScale = new Vector3(5, 5, 1); // Scale was off
     }
 
+    /// <summary>
+    /// Drops Food until counter reached 0
+    /// </summary>
+    /// <returns>?</returns>
     IEnumerator DropFood()
     {
         Container = Instantiate(new GameObject());
-        
-        while(dropCounter > 0)
+
+        while (dropCounter > 0)
         {
             spriteRenderer.sprite = ChangeSprite();
             DropOne();
             dropCounter--;
-            if(dropCounter>0) yield return new WaitForSeconds(timeBetweenDrops);
+            if (dropCounter > 0) yield return new WaitForSeconds(timeBetweenDrops);
         }
         Destroy(gameObject);
     }
 
+    /// <summary>
+    /// Animation for Bag.
+    /// </summary>
+    /// <returns>Returns Sprite depending on how many food drops are left</returns>
     private Sprite ChangeSprite()
     {
         float relativeAmount = (float)dropCounter / (float)originalDrops;
