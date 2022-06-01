@@ -3091,7 +3091,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 48.04, y: 15.17, z: 30.089409}
+  m_LocalPosition: {x: 48.169994, y: 15.12, z: 30.089409}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 863564801}
@@ -3553,11 +3553,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6933726400870206839, guid: d375463e4058bfc4cbe51111858d5a6c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 39.81
+      value: 39.42
       objectReference: {fileID: 0}
     - target: {fileID: 6933726400870206839, guid: d375463e4058bfc4cbe51111858d5a6c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 11.39
+      value: 11.34
       objectReference: {fileID: 0}
     - target: {fileID: 6933726400870206839, guid: d375463e4058bfc4cbe51111858d5a6c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6823,6 +6823,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MatrixBG
       objectReference: {fileID: 0}
+    - target: {fileID: 4497104065547900755, guid: db46c6bb99174bc489c5356fb0a298ca, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db46c6bb99174bc489c5356fb0a298ca, type: 3}
 --- !u!1001 &1728411410
@@ -8546,6 +8550,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8784614037546672764, guid: e5fdd1969bcc9464d8e3b6dfbaeebf02, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8784614037546672766, guid: e5fdd1969bcc9464d8e3b6dfbaeebf02, type: 3}
+      propertyPath: m_Color.a
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
