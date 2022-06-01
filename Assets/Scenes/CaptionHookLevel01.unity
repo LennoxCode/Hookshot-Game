@@ -2872,6 +2872,11 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.35, y: 2.0700002}
   m_EdgeRadius: 0
+--- !u!4 &478737371 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6252583540311084605, guid: fc0bfced13e5a9a438ffc0ece9c1d3d8, type: 3}
+  m_PrefabInstance: {fileID: 1728411410}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &484782050
 GameObject:
   m_ObjectHideFlags: 0
@@ -3024,7 +3029,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   followSpeed: 3.98
-  followOffset: {x: 12.13, y: 3.75}
+  followOffset: {x: 7.93, y: 3.75}
   playerObject: {fileID: 1396100785}
 --- !u!20 &519420031
 Camera:
@@ -3077,7 +3082,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 147.38234, y: 29.93691, z: 30.089409}
+  m_LocalPosition: {x: 48.04, y: 15.17, z: 30.089409}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 863564801}
@@ -3588,11 +3593,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6933726400870206839, guid: d375463e4058bfc4cbe51111858d5a6c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 147.4423
+      value: 39.81
       objectReference: {fileID: 0}
     - target: {fileID: 6933726400870206839, guid: d375463e4058bfc4cbe51111858d5a6c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 29.88691
+      value: 11.39
       objectReference: {fileID: 0}
     - target: {fileID: 6933726400870206839, guid: d375463e4058bfc4cbe51111858d5a6c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6350,7 +6355,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ce65bb4f4b273549b9268e99f6eb8e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnPoint: {fileID: 0}
+  spawnPoint: {fileID: 478737371}
   rb: {fileID: 1396100786}
 --- !u!1 &1404891182
 GameObject:
@@ -7215,6 +7220,14 @@ PrefabInstance:
     - target: {fileID: 1782350000824026281, guid: fc0bfced13e5a9a438ffc0ece9c1d3d8, type: 3}
       propertyPath: m_Name
       value: Start
+      objectReference: {fileID: 0}
+    - target: {fileID: 6252583540311084605, guid: fc0bfced13e5a9a438ffc0ece9c1d3d8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.061
+      objectReference: {fileID: 0}
+    - target: {fileID: 6252583540311084605, guid: fc0bfced13e5a9a438ffc0ece9c1d3d8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.044
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc0bfced13e5a9a438ffc0ece9c1d3d8, type: 3}
