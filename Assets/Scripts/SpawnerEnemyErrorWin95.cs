@@ -28,7 +28,7 @@ public class SpawnerEnemyErrorWin95 : MonoBehaviour
         if (positionIndex == 0)
         {
             Instantiate(objectToSpawn, ObjectSpawnPosition, Quaternion.identity);
-            FindObjectOfType<AudioManager>().Play("EnemyErrorWin95");
+            AudioManager.instance.Play("EnemyErrorWin95");
             positionIndex++;
         }
         if (positionIndex > 0 && positionIndex < 25)
