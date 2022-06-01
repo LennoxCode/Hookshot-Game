@@ -49,6 +49,7 @@ public class MenuStateMachine : StateMachine<MenuTransitions>
         base.Start();
         Goal.playerEnteredGoal += () => Trigger(MenuTransitions.GameWon);
         SceneController.instance.OnLevelLoaded += () => Trigger(MenuTransitions.ResumeGame);
+        GameStateMachine.instance.gameResumed += () => Trigger(MenuTransitions.ResumeGame);
     }
     
     private void Update()

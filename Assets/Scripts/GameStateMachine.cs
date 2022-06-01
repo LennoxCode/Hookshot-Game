@@ -22,6 +22,11 @@ public class GameStateMachine : MonoBehaviour
         SceneController.instance.OnLevelLoaded += () => currState = GameState.Active;
     }
 
+    public void ResumeGame()
+    {
+        currState = GameState.Active;
+        gameResumed?.Invoke();
+    }
     private void Update()
     {
         switch (currState)
